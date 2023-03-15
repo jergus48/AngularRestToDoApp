@@ -1,0 +1,116 @@
+<!-- <div class="notes-header">
+    <h2 class="notes-title">&#9782; Notes</h2>
+    <p class="notes-count">{{notes.length}}</p>
+</div>
+
+<div class='notes' *ngIf="!showAdd">
+
+
+    <a *ngFor="let note of notes" [routerLink]="['/note',note.id]" style="font-size:x-large;">
+        <div class='notes-list-item'>
+            <div style="display: flex; justify-content: space-between;">
+                <div class="notes-list-component">
+                    <h2>{{note.name}}</h2>
+
+                </div>
+                <a (click)="OnDelete(note);$event.stopPropagation()" routerLink="/">Delete</a>
+
+            </div>
+        </div>
+    </a>
+
+
+</div>
+
+
+
+
+
+
+<div *ngIf="showAdd">
+
+
+
+    <div class="note">
+        <div class="note-header">
+            <input maxlength='23' type="text" id="name" name="name" placeholder="Name" #name>
+            <button type="button" (click)="setValue(name.value,text.value)">Add</button>
+
+        </div>
+        <textarea maxlength='4990' id="text" name="text" placeholder="text" #text></textarea>
+
+    </div>
+</div>
+<a>
+    <button class='button-with-icon floating-button ' (click)="toggleComponent()"></button>
+</a> -->
+
+
+
+    <section class="vh-100" style="background-color: #3da2c3;">
+        <a routerLink="/">
+            <button class="button-with-icon" style="position: absolute;"></button>
+        </a>
+        <div class="container py-5 h-100">
+
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-8 col-xl-6">
+                    <div class="card rounded-3">
+                        <div class="card-body p-4">
+
+                            <p class="mb-2"><span class="h2 me-2">{{List.name}}</span> </p>
+                            <p class="text-muted pb-2">{{currentDate | date:'dd/MM/yyyy • h:mm '}}</p>
+
+                            <div class="list-group rounded-0">
+                                <div class="list-group-item border-0 d-flex align-items-center justify-content-between ps-0"
+                                    *ngFor="let task of tasks">
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."
+                                            [checked]="task.complete" (change)="UpdateTask(task)" />
+                                        <div [ngSwitch]="task.complete">
+                                            <ng-container *ngSwitchCase="true">
+                                                <s>{{task.name}}</s>
+                                            </ng-container>
+                                            <ng-container *ngSwitchCase="false">
+                                                {{task.name}}
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div [ngSwitch]="task.complete">
+                                            <ng-container *ngSwitchCase="true">
+                                                <span style="padding-right: 10px;">{{task.created | date:'dd.MM.yyyy'}}
+                                                    <b>/</b> {{task.end_date |
+                                                    date:'dd.MM.yyyy'}}</span>
+                                            </ng-container>
+
+                                        </div>
+
+                                        <button type="button" class="btn-close" aria-label="Close"
+                                            (click)="OnDelete(task)"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="divider d-flex align-items-center my-4">
+                                <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Add Task</p>
+                            </div>
+
+                            <div class="input-group mb-3" style="    width: 80%;
+              margin-left: auto;
+              margin-right: auto;">
+                                <input type="text" class="form-control" placeholder="task"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2" id="name"
+                                    name="name" #name>
+                                <div class="input-group-append">
+                                    <button class="input-group-text" id="basic-addon2" type="button"
+                                        (click)="setValue(name.value)">Add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
