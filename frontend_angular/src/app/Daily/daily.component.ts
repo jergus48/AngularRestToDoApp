@@ -12,7 +12,7 @@ export class DailyComponent {
     tasks: any = [];
     currentDate: Date = new Date();
     List: any = { name: "default" };
-
+    model = { name: "", time: "" };
 
 
 
@@ -47,12 +47,14 @@ export class DailyComponent {
 
 
     }
-    setValue(name: string, time: any) {
-        console.log(time)
-        this.service.addDaily(name, time).subscribe()
+    setValue(form: any) {
+
+        this.service.addDaily(form.name, form.time).subscribe()
         setTimeout(() => {
             this.GetData()
         }, 100);
+        this.model.name = ""
+        this.model.time = ""
 
     }
     OnDelete(task: any) {

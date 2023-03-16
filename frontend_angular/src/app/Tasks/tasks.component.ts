@@ -11,6 +11,7 @@ export class TasksComponent {
     tasks: any = [{ name: "default", complete: false }];
     currentDate: Date = new Date();
     List: any = { name: "default" };
+    name = "";
 
 
 
@@ -34,13 +35,13 @@ export class TasksComponent {
 
 
     }
-    setValue(name: string) {
+    setValue(form: any) {
 
-        this.service.addTask(name, this.userId).subscribe()
+        this.service.addTask(form.name, this.userId).subscribe()
         setTimeout(() => {
             this.GetData()
         }, 100);
-
+        this.name = ""
     }
     OnDelete(task: any) {
         this.service.deleteTask(task).subscribe()

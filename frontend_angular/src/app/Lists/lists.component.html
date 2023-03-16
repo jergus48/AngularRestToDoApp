@@ -65,7 +65,7 @@
                                     <b>{{list.name}}</b>
 
                                     <a type="button" class="btn-close" aria-label="Close" style="margin-left: auto;"
-                                        (click)="OnDelete(list);$event.stopPropagation()" routerLink="/"></a>
+                                        (click)="OnDelete(list);$event.stopPropagation()" routerLink="/lists"></a>
                                 </li>
                             </a>
                         </ul>
@@ -74,16 +74,18 @@
                             <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Add List</p>
                         </div>
 
-                        <div class="input-group mb-3" style="    width: 80%;
-              margin-left: auto;
-              margin-right: auto;">
+
+                        <form autocomplete="off" #AddListForm="ngForm" (ngSubmit)="setValue(AddListForm.value)"
+                            class="input-group mb-3" style="    width: 80%;
+                            margin-left: auto;
+                            margin-right: auto;">
                             <input type="text" class="form-control" placeholder="task" aria-label="Recipient's username"
-                                aria-describedby="basic-addon2" id="name" name="name" #name>
+                                aria-describedby="basic-addon2" id="name" name="name" [(ngModel)]="name">
                             <div class="input-group-append">
-                                <button class="input-group-text" id="basic-addon2" type="button"
-                                    (click)="setValue(name.value)">Add</button>
+                                <button class="input-group-text" id="basic-addon2" type="submit">Add</button>
                             </div>
-                        </div>
+                        </form>
+
 
                     </div>
                 </div>

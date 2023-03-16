@@ -11,13 +11,15 @@ import { DailyComponent } from './Daily/daily.component';
 import { HomeComponent } from './Home/home.component';
 import { RoutingTable } from './routes';
 import { TimeWithoutSecondsPipe } from './Daily/withoutseconds.pipe';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent, ListComponent, TasksComponent, DailyComponent, TimeWithoutSecondsPipe, HomeComponent
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(RoutingTable),
   ],

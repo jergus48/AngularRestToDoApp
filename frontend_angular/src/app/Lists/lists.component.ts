@@ -10,7 +10,7 @@ import { ListService } from './lists.service';
 })
 export class ListComponent {
     lists: any = [{ name: "default" }];
-    showAdd = false;
+    name = "";
     currentDate: Date = new Date();
 
 
@@ -25,17 +25,16 @@ export class ListComponent {
         this.GetData()
 
     }
-    toggleComponent() {
-        this.showAdd = !this.showAdd;
-    }
 
-    setValue(name: string) {
 
-        this.ListService.addList(name).subscribe()
+    setValue(form: any) {
+
+        this.ListService.addList(form.name).subscribe()
         setTimeout(() => {
             this.GetData()
         }, 100);
-        this.showAdd = false
+        this.name = ""
+
     }
 
     GetData() {

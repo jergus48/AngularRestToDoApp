@@ -47,70 +47,68 @@
 
 
 
-    <section class="vh-100" style="background-color: #3da2c3;">
-        <a routerLink="/">
-            <button class="button-with-icon" style="position: absolute;"></button>
-        </a>
-        <div class="container py-5 h-100">
+<section class="vh-100" style="background-color: #3da2c3;">
+    <a routerLink="/">
+        <button class="button-with-icon" style="position: absolute;"></button>
+    </a>
+    <div class="container py-5 h-100">
 
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-8 col-xl-6">
-                    <div class="card rounded-3">
-                        <div class="card-body p-4">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <div class="card-body p-4">
 
-                            <p class="mb-2"><span class="h2 me-2">{{List.name}}</span> </p>
-                            <p class="text-muted pb-2">{{currentDate | date:'dd/MM/yyyy • h:mm '}}</p>
+                        <p class="mb-2"><span class="h2 me-2">{{List.name}}</span> </p>
+                        <p class="text-muted pb-2">{{currentDate | date:'dd/MM/yyyy • h:mm '}}</p>
 
-                            <div class="list-group rounded-0">
-                                <div class="list-group-item border-0 d-flex align-items-center justify-content-between ps-0"
-                                    *ngFor="let task of tasks">
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."
-                                            [checked]="task.complete" (change)="UpdateTask(task)" />
-                                        <div [ngSwitch]="task.complete">
-                                            <ng-container *ngSwitchCase="true">
-                                                <s>{{task.name}}</s>
-                                            </ng-container>
-                                            <ng-container *ngSwitchCase="false">
-                                                {{task.name}}
-                                            </ng-container>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div [ngSwitch]="task.complete">
-                                            <ng-container *ngSwitchCase="true">
-                                                <span style="padding-right: 10px;">{{task.created | date:'dd.MM.yyyy'}}
-                                                    <b>/</b> {{task.end_date |
-                                                    date:'dd.MM.yyyy'}}</span>
-                                            </ng-container>
-
-                                        </div>
-
-                                        <button type="button" class="btn-close" aria-label="Close"
-                                            (click)="OnDelete(task)"></button>
+                        <div class="list-group rounded-0">
+                            <div class="list-group-item border-0 d-flex align-items-center justify-content-between ps-0"
+                                *ngFor="let task of tasks">
+                                <div class="d-flex align-items-center">
+                                    <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."
+                                        [checked]="task.complete" (change)="UpdateTask(task)" />
+                                    <div [ngSwitch]="task.complete">
+                                        <ng-container *ngSwitchCase="true">
+                                            <s>{{task.name}}</s>
+                                        </ng-container>
+                                        <ng-container *ngSwitchCase="false">
+                                            {{task.name}}
+                                        </ng-container>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="d-flex align-items-center">
+                                    <div [ngSwitch]="task.complete">
+                                        <ng-container *ngSwitchCase="true">
+                                            <span style="padding-right: 10px;">{{task.created | date:'dd.MM.yyyy'}}
+                                                <b>/</b> {{task.end_date |
+                                                date:'dd.MM.yyyy'}}</span>
+                                        </ng-container>
 
-                            <div class="divider d-flex align-items-center my-4">
-                                <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Add Task</p>
-                            </div>
+                                    </div>
 
-                            <div class="input-group mb-3" style="    width: 80%;
-              margin-left: auto;
-              margin-right: auto;">
-                                <input type="text" class="form-control" placeholder="task"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" id="name"
-                                    name="name" #name>
-                                <div class="input-group-append">
-                                    <button class="input-group-text" id="basic-addon2" type="button"
-                                        (click)="setValue(name.value)">Add</button>
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                        (click)="OnDelete(task)"></button>
                                 </div>
                             </div>
-
                         </div>
+
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Add Task</p>
+                        </div>
+
+                        <form autocomplete="off" #AddListForm="ngForm" (ngSubmit)="setValue(AddListForm.value)"
+                            class="input-group mb-3" style="    width: 80%;
+                            margin-left: auto;
+                            margin-right: auto;">
+                            <input type="text" class="form-control" placeholder="task" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2" id="name" name="name" [(ngModel)]="name">
+                            <div class="input-group-append">
+                                <button class="input-group-text" id="basic-addon2" type="submit">Add</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
