@@ -2,6 +2,7 @@
 Made by:
 - Django REST
 - Angular
+-BootStrap 4
 
 Features:
 - add lists,tasks,daily tasks
